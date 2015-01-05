@@ -4,6 +4,7 @@
 'use strict';
 
 var React = require('react');
+var {Table} = require('react-bootstrap');
 var TodoItem = require('./ToDoItem.jsx');
 
 var TodoList = React.createClass({
@@ -15,11 +16,11 @@ var TodoList = React.createClass({
     );
 
     return (
-      <table className="table">
+      <Table>
         <tbody>
           {items}
         </tbody>
-      </table>
+      </Table>
     );
   }
 });

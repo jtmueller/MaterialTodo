@@ -4,7 +4,24 @@
 'use strict';
 
 var React = require('react');
+var {Modal,ModalTrigger,Button,Glyphicon} = require('react-bootstrap');
 var cx = require('react-classset');
+
+var DeleteConfirm = React.createClass({
+  render() {
+    return (
+      <Modal {...this.props} title="Are you sure?" animation={true}>
+        <div className="modal-body">
+          <p>Are you sure you want to permanently delete the task <em>{this.props.itemname}</em>?</p>
+        </div>
+        <div className="modal-footer">
+          <Button bsStyle="primary" onClick={this.props.onConfirm}>Yes</Button>
+          <Button onClick={this.props.onRequestHide}>No</Button>
+        </div>
+      </Modal>
+    );
+  }
+});
 
 var TodoItem = React.createClass({
   getInitialState() {
@@ -47,10 +64,9 @@ var TodoItem = React.createClass({
           </label>
         </td>
         <td>
-          <button type="button" onClick={this.handleDelete}
-            className="close" aria-label="Delete" title="Delete">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <ModalTrigger modal={<DeleteConfirm itemname={this.state.text} onConfirm={this.handleDelete} />}>
+            <button className="close"><Glyphicon glyph="remove" /></button>
+          </ModalTrigger>
         </td>
       </tr>
     );

@@ -4,6 +4,7 @@
 'use strict';
 
 var React = require('react');
+var {Grid, Row, Col} = require('react-bootstrap');
 var Firebase = require('firebase');
 var ReactFireMixin = require('reactfire');
 var TodoList = require('./TodoList.jsx');
@@ -45,12 +46,20 @@ var TodoApp = React.createClass({
 
   render() {
     return (
-      <div className="todoApp col-md-offset-4 col-md-4">
-        <TodoList data={this.state.data}
-          onItemChange={this.handleItemChange}
-          onDelete={this.handleDelete} />
-        <TodoForm onItemAdd={this.handleItemAdd} />
-      </div>
+      <Grid className="todoApp">
+        <Row>
+          <Col mdOffset={4} md={4}>
+            <TodoList data={this.state.data}
+              onItemChange={this.handleItemChange}
+              onDelete={this.handleDelete} />
+          </Col>
+        </Row>
+        <Row>
+          <Col mdOffset={4} md={4}>
+            <TodoForm onItemAdd={this.handleItemAdd} />
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 });
