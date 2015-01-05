@@ -1,9 +1,9 @@
 {
-  "name": "react-seed",
+  "name": "material-todo",
   "private": true,
   "version": "0.0.0",
-  "description": "Facebook React Starter Kit",
-  "repository": "https://github.com/kriasoft/react-starter-kit",
+  "description": "Basic ToDo app",
+  "repository": "https://github.com/jtmueller/MaterialTodo",
   "license": "MIT",
   "dependencies": {
     "bootstrap": "^3.2.0",
