@@ -18,12 +18,21 @@ var TodoForm = React.createClass({
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <textarea ref="text"
-          placeholder="Add a new task!"
-          className="form-control"></textarea>
-
-        <button type="submit" className="btn btn-default">Save</button>
+      <form className="form-inline" onSubmit={this.handleSubmit}>
+        <table className="table">
+          <tbody>
+            <tr>
+              <td>
+                <input type="text" ref="text"
+                  placeholder={this.props.placeholder || 'What needs to be done?'}
+                  className="form-control" />
+              </td>
+              <td>
+                <button type="submit" className="btn btn-default">Save</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </form>
     );
   }

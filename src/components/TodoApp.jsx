@@ -27,26 +27,29 @@ var TodoApp = React.createClass({
     });
   },
 
-  handleCompletionChange(key, checked) {
+  handleItemChange(updatedItem) {
     this.setState({
       data: this.state.data.map(item => {
-        if (item.key === key) {
-          return {
-            text: item.text,
-            key: item.key,
-            completed: checked
-          }
+        if (item.key === updatedItem.key) {
+          return updatedItem;
         }
         return item;
       })
     });
   },
 
+  handleDelete(key) {
+    this.setState({
+      data: this.state.data.filter(item => item.key !== key)
+    });
+  },
+
   render() {
     return (
-      <div className="col-md-4 col-md-offset-4">
+      <div className="todoApp col-md-offset-4 col-md-4">
         <TodoList data={this.state.data}
-          onCompletionChange={this.handleCompletionChange} />
+          onItemChange={this.handleItemChange}
+          onDelete={this.handleDelete} />
         <TodoForm onItemAdd={this.handleItemAdd} />
       </div>
     );

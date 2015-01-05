@@ -8,7 +8,15 @@ var cx = require('react-classset');
 
 var TodoItem = React.createClass({
   handleChange(e) {
-    this.props.onCompletionChange(this.props.key, e.target.checked);
+    this.props.onItemChange({
+      key: this.props.key,
+      completed: e.target.checked,
+      text: this.props.text
+    });
+  },
+
+  handleDelete(e) {
+    this.props.onDelete(this.props.key);
   },
 
   render() {
@@ -28,6 +36,12 @@ var TodoItem = React.createClass({
             htmlFor={'x' + this.props.key}>
             {this.props.text}
           </label>
+        </td>
+        <td>
+          <button type="button" onClick={this.handleDelete}
+            className="close" aria-label="Delete" title="Delete">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </td>
       </tr>
     );

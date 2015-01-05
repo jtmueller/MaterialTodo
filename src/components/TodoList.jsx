@@ -10,7 +10,8 @@ var TodoList = React.createClass({
   render() {
     var items = this.props.data.map(item =>
         <TodoItem key={item.key} completed={item.completed} text={item.text}
-          onCompletionChange={this.props.onCompletionChange} />);
+          onItemChange={this.props.onItemChange}
+          onDelete={this.props.onDelete} />);
 
     return (
       <table className="table">
