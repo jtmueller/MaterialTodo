@@ -1,1 +1,9 @@
-.todoApp label.todo{font-weight:400}.todoApp label.todo.completed{text-decoration:line-through}.todoApp td input[type=text]{width:100%}
+.todoApp label.todo {
+  font-weight: normal;
+  }
+.todoApp label.todo.completed {
+  text-decoration: line-through;
+  }
+.todoApp td input[type='text'] {
+  width: 100%;
+  }
