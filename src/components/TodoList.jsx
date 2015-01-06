@@ -10,7 +10,7 @@ var TodoItem = require('./ToDoItem.jsx');
 var TodoList = React.createClass({
   render() {
     var items = this.props.data.map(item =>
-      <TodoItem key={item.key} data={item}
+      <TodoItem key={item.key} text={item.text} completed={item.completed}
         onItemChange={this.props.onItemChange}
         onDelete={this.props.onDelete} />
     );
