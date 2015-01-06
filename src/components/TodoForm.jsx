@@ -4,6 +4,7 @@
 'use strict';
 
 var React = require('react');
+var TodoActions = require('./TodoActions.js');
 var {Input, Button, Table} = require('react-bootstrap');
 
 var TodoForm = React.createClass({
@@ -13,7 +14,7 @@ var TodoForm = React.createClass({
     if (!text)
       return;
 
-    this.props.onItemAdd({ text: text });
+    TodoActions.add({ text: text });
     this.refs.text.getInputDOMNode().value = '';
   },
 

@@ -7,7 +7,6 @@
 var React = require('react');
 var Router = require('react-router');
 var {Route, Redirect, RouteHandler} = Router;
-var TodoApp = require('./components/TodoApp.jsx');
 
 // Export React so the dev tools can find it
 (window !== window.top ? window.top : window).React = React;
@@ -21,6 +20,8 @@ var App = React.createClass({
     );
   }
 });
+
+var TodoApp = require('./components/TodoApp.jsx');
 
 var routes = (
   <Route name="app" handler={App}>

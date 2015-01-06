@@ -6,6 +6,7 @@
 var React = require('react');
 var {Modal,ModalTrigger,Button,Glyphicon} = require('react-bootstrap');
 var cx = require('react-classset');
+var TodoActions = require('./TodoActions.js');
 
 var DeleteConfirm = React.createClass({
   render() {
@@ -24,8 +25,9 @@ var DeleteConfirm = React.createClass({
 });
 
 var TodoItem = React.createClass({
+  
   handleChange(e) {
-    this.props.onItemChange({
+    TodoActions.update({
       key: this.props.item.key,
       completed: e.target.checked,
       text: this.props.item.text
@@ -33,7 +35,7 @@ var TodoItem = React.createClass({
   },
 
   handleDelete(e) {
-    this.props.onDelete(this.props.item.key);
+    TodoActions.remove(this.props.item.key);
   },
 
   render() {
