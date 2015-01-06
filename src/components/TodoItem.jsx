@@ -26,36 +26,36 @@ var DeleteConfirm = React.createClass({
 var TodoItem = React.createClass({
   handleChange(e) {
     this.props.onItemChange({
-      key: this.props.key,
+      key: this.props.item.key,
       completed: e.target.checked,
-      text: this.props.text
+      text: this.props.item.text
     });
   },
 
   handleDelete(e) {
-    this.props.onDelete(this.props.key);
+    this.props.onDelete(this.props.item.key);
   },
 
   render() {
     var classes = cx({
       todo: true,
-      completed: this.props.completed
+      completed: this.props.item.completed
     });
     return (
       <tr>
         <td>
-          <input id={'x' + this.props.key} type="checkbox"
-            checked={this.props.completed}
+          <input id={'x' + this.props.item.key} type="checkbox"
+            checked={this.props.item.completed}
             onChange={this.handleChange} />
         </td>
         <td>
           <label className={classes}
-            htmlFor={'x' + this.props.key}>
-            {this.props.text}
+            htmlFor={'x' + this.props.item.key}>
+            {this.props.item.text}
           </label>
         </td>
         <td>
-          <ModalTrigger modal={<DeleteConfirm itemname={this.props.text} onConfirm={this.handleDelete} />}>
+          <ModalTrigger modal={<DeleteConfirm itemname={this.props.item.text} onConfirm={this.handleDelete} />}>
             <button className="close"><Glyphicon glyph="remove" /></button>
           </ModalTrigger>
         </td>

@@ -33,7 +33,6 @@ var TodoApp = React.createClass({
   },
 
   handleItemChange(updatedItem) {
-    console.log('update: ', updatedItem);
     this.firebaseRefs["data"]
       .child(updatedItem.key)
       .update(updatedItem);
