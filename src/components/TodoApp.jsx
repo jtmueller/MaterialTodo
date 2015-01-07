@@ -27,14 +27,10 @@ var TodoApp = React.createClass({
       <Grid className="todoApp">
         <Row>
           <Col mdOffset={4} md={4}>
-            <TodoList data={this.state.data} />
-          </Col>
-        </Row>
-        <Row>
-          <Col mdOffset={4} md={4}>
             <TodoForm />
           </Col>
         </Row>
+        <TodoList data={this.state.data} />
       </Grid>
     );
   }

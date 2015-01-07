@@ -22,8 +22,7 @@ var TodoForm = React.createClass({
     return (
       <form onSubmit={this.handleSubmit}>
         <Input type="text" ref="text" cssClass="col-md-12"
-          placeholder={this.props.placeholder || 'What needs to be done?'}
-          buttonAfter={<Button type="submit" bsStyle="primary">Save</Button>} />
+          placeholder={this.props.placeholder || 'What needs to be done?'} />
       </form>
     );
   }
