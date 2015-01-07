@@ -45,7 +45,7 @@ var TodoItem = React.createClass({
         <Col xs={2}>
           <div className="checkbox">
             <label>
-              <input id={'x' + this.props.item.key} type="checkbox"
+              <input key={this.props.item.key} id={'x' + this.props.item.key} type="checkbox"
                 checked={this.props.item.completed}
                 onChange={this.handleClick} />
             </label>
@@ -53,11 +53,11 @@ var TodoItem = React.createClass({
         </Col>
         <Col xs={8}>
           <label htmlFor={'x' + this.props.item.key}
-            className={ cx({
+            className={cx({
               todo: true,
               completed: this.props.item.completed,
               'list-group-item-text': true
-            }) }>
+            })}>
             {this.props.item.text}
           </label>
         </Col>

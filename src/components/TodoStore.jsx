@@ -15,7 +15,6 @@ Reflux.ListenerMethods.listenToFirebase =
 
 var TodoStore = Reflux.createStore({
     init() {
-        this.todos = [];
         this.firebaseRef = new Firebase("https://hrbo-todo.firebaseio.com/todos/");
         this.listenToFirebase(this.firebaseRef, this.firebaseChange);
         this.listenToMany(TodoActions);
@@ -25,7 +24,6 @@ var TodoStore = Reflux.createStore({
         var data = [];
         todos.forEach(x => { data.push(x.val()); });
         this.trigger(data);
-        this.todos = data;
         //console.log('firebaseChange', data, todos.val());
     },
 
@@ -33,15 +31,11 @@ var TodoStore = Reflux.createStore({
         //console.log('add', item);
         var newItem = this.firebaseRef.push();
         item.key = newItem.key();
-        this.todos.push(item);
-        this.trigger(this.todos);
         newItem.set(item);
     },
 
     remove(key) {
         //console.log('delete', key);
-        this.todos = _.filter(this.todos, x => x.key !== key);
-        this.trigger(this.todos);
         this.firebaseRef
             .child(key)
             .remove();
@@ -49,9 +43,6 @@ var TodoStore = Reflux.createStore({
 
     update(item) {
         //console.log('update', item);
-        var oldItem = _.find(this.todos, x => x.key === item.key);
-        _.extend(oldItem, item);
-        this.trigger(this.todos);
         this.firebaseRef
             .child(item.key)
             .update(item);

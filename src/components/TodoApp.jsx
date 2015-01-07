@@ -7,7 +7,6 @@ var React = require('react');
 var Reflux = require('reflux');
 var {Grid, Row, Col} = require('react-bootstrap');
 
-var TodoActions = require('./TodoActions.js');
 var TodoStore = require('./TodoStore.jsx');
 
 var TodoList = require('./TodoList.jsx');
