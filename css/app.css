@@ -1,1 +1,1 @@
-.todoApp label.todo{font-weight:400}.todoApp label.todo.completed{color:silver;text-decoration:line-through}.todoApp td input[type=text]{width:100%}
+label.todo{font-weight:400}label.todo.completed{color:silver;text-decoration:line-through}i.close{font-size:25pt}.icon-close{display:inline-block;padding:5px;margin:5px;cursor:pointer}
