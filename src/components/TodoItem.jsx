@@ -4,7 +4,7 @@
 'use strict';
 
 var React = require('react');
-var {Col,Modal,ModalTrigger,Button,Glyphicon} = require('react-bootstrap');
+var {Col,Modal,ModalTrigger,Button,Panel} = require('react-bootstrap');
 var cx = require('react-classset');
 var TodoActions = require('./TodoActions.js');
 
@@ -41,34 +41,32 @@ var TodoItem = React.createClass({
 
   render() {
     return (
-      <div className="panel panel-default">
-        <div className="panel-body">
-          <Col xs={2}>
-            <div className="checkbox">
-              <label>
-                <input id={'x' + this.props.item.key} type="checkbox"
-                  checked={this.props.item.completed}
-                  onChange={this.handleClick} />
-              </label>
-            </div>
-          </Col>
-          <Col xs={8}>
-            <label htmlFor={'x' + this.props.item.key}
-              className={ cx({
-                todo: true,
-                completed: this.props.item.completed,
-                'list-group-item-text': true
-              }) }>
-              {this.props.item.text}
+      <Panel>
+        <Col xs={2}>
+          <div className="checkbox">
+            <label>
+              <input id={'x' + this.props.item.key} type="checkbox"
+                checked={this.props.item.completed}
+                onChange={this.handleClick} />
             </label>
-          </Col>
-          <Col xs={2}>
-            <ModalTrigger modal={<DeleteConfirm itemname={this.props.item.text} onConfirm={this.handleDelete} />}>
-              <div className="icon-close"><i className="mdi-content-clear close"></i></div>
-            </ModalTrigger>
-          </Col>
-        </div>
-      </div>
+          </div>
+        </Col>
+        <Col xs={8}>
+          <label htmlFor={'x' + this.props.item.key}
+            className={ cx({
+              todo: true,
+              completed: this.props.item.completed,
+              'list-group-item-text': true
+            }) }>
+            {this.props.item.text}
+          </label>
+        </Col>
+        <Col xs={2}>
+          <ModalTrigger modal={<DeleteConfirm itemname={this.props.item.text} onConfirm={this.handleDelete} />}>
+            <div className="icon-close"><i className="mdi-content-clear close"></i></div>
+          </ModalTrigger>
+        </Col>
+      </Panel>
     );
   }
 });
