@@ -1,11 +1,8 @@
-/**
- * @jsx React.DOM
- */
 'use strict';
 
 var React = require('react');
 var TodoActions = require('./TodoActions.js');
-var {Input, Button, Table} = require('react-bootstrap');
+var {Input} = require('./react-material.jsx');
 
 var TodoForm = React.createClass({
   handleSubmit(e) {
@@ -15,13 +12,13 @@ var TodoForm = React.createClass({
       return;
 
     TodoActions.add({ text: text });
-    this.refs.text.getInputDOMNode().value = '';
+    this.refs.text.clearValue();
   },
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <Input type="text" ref="text" cssClass="col-md-12"
+        <Input type="text" ref="text" floatingLabel
           placeholder={this.props.placeholder || 'What needs to be done?'} />
       </form>
     );

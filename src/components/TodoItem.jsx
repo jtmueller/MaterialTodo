@@ -1,11 +1,9 @@
-/**
- * @jsx React.DOM
- */
 'use strict';
 
 var React = require('react');
-var {Col,Modal,ModalTrigger,Button,Panel} = require('react-bootstrap');
 var cx = require('react-classset');
+var {Col,Modal,ModalTrigger,Button,Panel} = require('react-bootstrap');
+var {Checkbox} = require('./react-material.jsx');
 var TodoActions = require('./TodoActions.js');
 
 var DeleteConfirm = React.createClass({
@@ -43,13 +41,9 @@ var TodoItem = React.createClass({
     return (
       <Panel>
         <Col xs={2}>
-          <div className="checkbox">
-            <label>
-              <input key={this.props.item.key} id={'x' + this.props.item.key} type="checkbox"
-                checked={this.props.item.completed}
-                onChange={this.handleClick} />
-            </label>
-          </div>
+          <Checkbox id={'x' + this.props.item.key}
+            checked={this.props.item.completed}
+            onChange={this.handleClick} />
         </Col>
         <Col xs={8}>
           <label htmlFor={'x' + this.props.item.key}
